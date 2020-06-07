@@ -49,3 +49,27 @@ describe("GET request for planets", () => {
       });
   });
 });
+
+describe("GET request for a particular planet", () => {
+  it("should return the planet input as a parameter", async () => {
+    return chai
+      .request(app)
+      .get("/planet/earth")
+      .then((res: any) => {
+        chai
+          .expect(res.text)
+          .to.eql('{"_id":"earth","size":10,"distanceFromSun":40}');
+        chai.expect(res.statusCode).to.equal(200);
+      });
+  });
+
+  it("should return 400 'Planet doesn't exist' string if planet isn't present", async () => {
+    return chai
+      .request(app)
+      .get("/planet/pluto")
+      .then((res: any) => {
+        chai.expect(res.text).to.eql("Planet doesn't exist");
+        chai.expect(res.statusCode).to.equal(400);
+      });
+  });
+});
