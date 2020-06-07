@@ -12,6 +12,10 @@ app.get("/planet/:name", PlanetController.getPlanet);
 app.post("/planet", PlanetController.addPlanet);
 app.put("/planet/:name", PlanetController.updatePlanet);
 app.delete("/planet/:name", PlanetController.deletePlanet);
+app.get(
+  "/planets/distance/:initial_planet/:following_planet",
+  PlanetController.getPlanetsDistance
+);
 
 app.listen(app.get("port"), () => {
   console.log("App is running on http://localhost:%d", app.get("port"));

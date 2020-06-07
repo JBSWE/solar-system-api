@@ -52,3 +52,26 @@ export const deletePlanet = (req: Request, res: Response) => {
     }
   });
 };
+
+export let getPlanetsDistance = (req: Request, res: Response) => {
+  Planet.find()
+    .where("_id")
+    .in([req.params.initial_planet, req.params.following_planet])
+    .exec(function (err, records) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      try {
+        let initial_planet: number = records[0]["distanceFromSun"];
+        let following_planet: number = records[1]["distanceFromSun"];
+
+        if (initial_planet >= following_planet) {
+          res.status(200).send({ distance: initial_planet - following_planet });
+        } else {
+          res.status(200).send({ distance: following_planet - initial_planet });
+        }
+      } catch (TypeError) {
+        res.status(404).send("One or more of the inputs are not planets");
+      }
+    });
+};

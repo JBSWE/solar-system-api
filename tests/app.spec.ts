@@ -145,6 +145,30 @@ describe("PUT request to update a planet", () => {
   });
 });
 
+describe("GET request that intakes two planet parameters", () => {
+  it("should return the distance between these two planets", async () => {
+    return chai
+      .request(app)
+      .get("/planets/distance/earth/mars")
+      .then((res: any) => {
+        chai.expect(res.text).to.eql('{"distance":45}');
+        chai.expect(res.statusCode).to.equal(200);
+      });
+  });
+
+  it("should return 'One or more of the inputs are not planets' when invalid parameters", async () => {
+    return chai
+      .request(app)
+      .get("/planets/distance/earth/pluto")
+      .then((res: any) => {
+        chai
+          .expect(res.text)
+          .to.eql("One or more of the inputs are not planets");
+        chai.expect(res.statusCode).to.equal(404);
+      });
+  });
+});
+
 describe("DELETE request to delete planet", () => {
   it("should delete planet mars & return 'Successfully Deleted Planet if exists' ", async () => {
     return chai
