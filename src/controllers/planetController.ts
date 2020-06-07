@@ -53,7 +53,7 @@ export const deletePlanet = (req: Request, res: Response) => {
   });
 };
 
-export let getPlanetsDistance = (req: Request, res: Response) => {
+export const getPlanetsDistance = (req: Request, res: Response) => {
   Planet.find()
     .where("_id")
     .in([req.params.initial_planet, req.params.following_planet])

@@ -4,11 +4,11 @@ This api is responsible for providing end points for planet information in a sol
 
 ## Getting Started
 
-Please see below to get up and running..
+Please see below to get up and running. Once running please refer to the swagger documentation located at http://localhost:3000/api-docs/
 
 ### Prerequisites
 
-The following are prerequsites as the project in dependent on these.
+The following are prerequsites as the project in dependent on these. Please ensure they are installed(and running for docker) before attempting to run locally.
 
 ```
 brew install docker docker-machine
@@ -34,7 +34,7 @@ Build the dockerfile image
 docker build -t solar-system .
 ```
 
-run the docker-compose.yml file which connects mongodb to the express app.
+Run the docker-compose.yml file which connects mongodb to the express app.
 
 ```
 docker-compose up
