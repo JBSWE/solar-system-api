@@ -1,0 +1,222 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a REST api that represents a solar system.",
+    "version": "1.0.0",
+    "title": "Swagger Solar System",
+    "contact": {
+      "email": "JackBurke1993@Gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "planet",
+      "description": "planet in solar system",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/planet": {
+      "post": {
+        "tags": ["planet"],
+        "summary": "Add a new planet to the solar system",
+        "description": "",
+        "operationId": "addPlanet",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Planet object that needs to be added to the solar system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/planet/{planetName}": {
+      "get": {
+        "tags": ["planet"],
+        "summary": "Find planet by name",
+        "description": "Returns a single planet",
+        "operationId": "getPlanetById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "planetName",
+            "in": "path",
+            "description": "ID of planet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Planet doesn't exist"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["planet"],
+        "summary": "Update planet by name",
+        "description": "Returns a single planet",
+        "operationId": "updatePlanetById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "planetName",
+            "in": "path",
+            "description": "ID of planet to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Planet object that needs to be added to the solar system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["planet"],
+        "summary": "Delete an existing planet",
+        "description": "",
+        "operationId": "deletePlanet",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "planetName",
+            "in": "path",
+            "description": "ID of planet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/planets": {
+      "get": {
+        "tags": ["planets"],
+        "summary": "Get all planets in the solar system",
+        "description": "",
+        "operationId": "allPlanet",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/planets/distance/{initial_planet}/{following_planet}": {
+      "get": {
+        "tags": ["planets"],
+        "summary": "Find planet by name",
+        "description": "Returns a single planet",
+        "operationId": "getDistanceBetweenPlanets",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "initial_planet",
+            "in": "path",
+            "description": "ID of planet to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "following_planet",
+            "in": "path",
+            "description": "ID of planet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Planet not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Planet": {
+      "type": "object",
+      "required": ["_id", "size", "distanceFromSun"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "distanceFromSun": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "Planet"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
