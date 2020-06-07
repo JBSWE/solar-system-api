@@ -21,3 +21,14 @@ export let getPlanet = (req: Request, res: Response) => {
     }
   });
 };
+
+export let addPlanet = (req: Request, res: Response) => {
+  const planet: IPlanet = new Planet(req.body);
+  planet.save((err: any) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(planet);
+    }
+  });
+};

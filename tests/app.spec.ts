@@ -73,3 +73,40 @@ describe("GET request for a particular planet", () => {
       });
   });
 });
+
+describe("POST request to add planets", () => {
+  it("should return the planet mercury", async () => {
+    const mercury = {
+      _id: "mercury",
+      size: "90",
+      distanceFromSun: 90,
+    };
+
+    return chai
+      .request(app)
+      .post("/planet")
+      .send(mercury)
+      .then((res: any) => {
+        chai
+          .expect(res.text)
+          .to.eql('{"_id":"mercury","size":90,"distanceFromSun":90}');
+        chai.expect(res.statusCode).to.equal(200);
+      });
+  });
+
+  it("should return error", async () => {
+    const mercury = {
+      _id: "mercury",
+      size: "90",
+    };
+
+    return chai
+      .request(app)
+      .post("/planet")
+      .send(mercury)
+      .then((res: any) => {
+        chai.expect(res.text).to.contain("errors");
+        chai.expect(res.statusCode).to.equal(500);
+      });
+  });
+});
