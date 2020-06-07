@@ -42,3 +42,13 @@ export const updatePlanet = (req: Request, res: Response) => {
     }
   });
 };
+
+export const deletePlanet = (req: Request, res: Response) => {
+  Planet.deleteOne({ _id: req.params.name }, (err: any) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send("Successfully Deleted Planet if exists");
+    }
+  });
+};

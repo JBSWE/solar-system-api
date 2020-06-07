@@ -144,3 +144,15 @@ describe("PUT request to update a planet", () => {
       });
   });
 });
+
+describe("DELETE request to delete planet", () => {
+  it("should delete planet mars & return 'Successfully Deleted Planet if exists' ", async () => {
+    return chai
+      .request(app)
+      .delete("/planet/mars")
+      .then((res: any) => {
+        chai.expect(res.text).to.eql("Successfully Deleted Planet if exists");
+        chai.expect(res.statusCode).to.equal(200);
+      });
+  });
+});
