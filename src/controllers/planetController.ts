@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Planet, { IPlanet } from "../planet";
 
-export let allPlanets = (req: Request, res: Response) => {
+export const allPlanets = (req: Request, res: Response) => {
   Planet.find((err: any, planets: any) => {
     if (err) {
       res.status(500).send(err);
@@ -11,7 +11,7 @@ export let allPlanets = (req: Request, res: Response) => {
   });
 };
 
-export let getPlanet = (req: Request, res: Response) => {
+export const getPlanet = (req: Request, res: Response) => {
   Planet.findById(req.params.name, (err: any, planet: IPlanet) => {
     if (err) {
       res.status(500).send(err);
@@ -22,13 +22,23 @@ export let getPlanet = (req: Request, res: Response) => {
   });
 };
 
-export let addPlanet = (req: Request, res: Response) => {
+export const addPlanet = (req: Request, res: Response) => {
   const planet: IPlanet = new Planet(req.body);
   planet.save((err: any) => {
     if (err) {
       res.status(500).send(err);
     } else {
       res.status(200).send(planet);
+    }
+  });
+};
+
+export const updatePlanet = (req: Request, res: Response) => {
+  Planet.findByIdAndUpdate(req.body._id, req.body, (err: any) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send("Successfully updated Planet if it exists!");
     }
   });
 };

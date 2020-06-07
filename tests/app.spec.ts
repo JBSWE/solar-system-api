@@ -110,3 +110,37 @@ describe("POST request to add planets", () => {
       });
   });
 });
+
+describe("PUT request to update a planet", () => {
+  it("should return 'Successfully updated Planet if it exists!'", async () => {
+    const earth = {
+      _id: "earth",
+      size: 10,
+      distanceFromSun: 5,
+    };
+
+    return chai
+      .request(app)
+      .put("/planet/earth")
+      .send(earth)
+      .then((res: any) => {
+        chai
+          .expect(res.text)
+          .to.eql("Successfully updated Planet if it exists!");
+        chai.expect(res.statusCode).to.equal(200);
+      })
+      .then(async () => {
+        const earth_updated: any = await Planet.findById(
+          "earth",
+          (err: any, planet: IPlanet) => {
+            return planet;
+          }
+        );
+        chai.expect(earth._id).to.equal(earth_updated._doc._id);
+        chai.expect(earth.size).to.equal(earth_updated._doc.size);
+        chai
+          .expect(earth.distanceFromSun)
+          .to.equal(earth_updated._doc.distanceFromSun);
+      });
+  });
+});

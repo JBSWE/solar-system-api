@@ -10,6 +10,7 @@ app.set("port", process.env.PORT || 3000);
 app.get("/planets", PlanetController.allPlanets);
 app.get("/planet/:name", PlanetController.getPlanet);
 app.post("/planet", PlanetController.addPlanet);
+app.put("/planet/:name", PlanetController.updatePlanet);
 
 app.listen(app.get("port"), () => {
   console.log("App is running on http://localhost:%d", app.get("port"));
