@@ -31,7 +31,7 @@ yarn global add typescript
 Build the dockerfile image
 
 ```
-docker build -t solar-system .
+docker build --build-arg mongodb_url="mongodb://host.docker.internal:27017/local" -t solar-system .
 ```
 
 Run the docker-compose.yml file which connects mongodb to the express app.
