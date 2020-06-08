@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Planet, { IPlanet } from "../planet";
 
 export const allPlanets = (req: Request, res: Response) => {
-  Planet.find((err: any, planets: any) => {
+  Planet.find((err: any, planets: IPlanet) => {
     if (err) {
       res.status(500).send(err);
     } else {
