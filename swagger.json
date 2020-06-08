@@ -161,8 +161,8 @@
     "/planets/distance/{initial_planet}/{following_planet}": {
       "get": {
         "tags": ["planets"],
-        "summary": "Find planet by name",
-        "description": "Returns a single planet",
+        "summary": "gets distance between two planets",
+        "description": "returns distance between two planets",
         "operationId": "getDistanceBetweenPlanets",
         "produces": ["application/json"],
         "parameters": [
