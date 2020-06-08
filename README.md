@@ -8,7 +8,7 @@ Please see below to get up and running. Once running please refer to the swagger
 
 ### Prerequisites
 
-The following are prerequsites as the project in dependent on these. Please ensure they are installed(and running for docker) before attempting to run locally.
+The following are prerequsites as the project in dependent on these. Please ensure they are installed(and running for docker) before attempting to run locally. This is assuming your running it locally on a Mac.
 
 ```
 brew install docker docker-machine
