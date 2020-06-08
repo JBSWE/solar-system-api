@@ -1,6 +1,6 @@
 import mongoose = require("mongoose");
 
-const uri: string = "mongodb://host.docker.internal:27017/local";
+const uri: string = process.env.MONGODB_URL || "mongodb://localhost/noobjs_dev";
 
 mongoose.connect(uri, (err: any) => {
   if (err) {
