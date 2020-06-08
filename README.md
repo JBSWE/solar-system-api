@@ -28,12 +28,6 @@ yarn global add typescript
 
 ### Running locally
 
-Run yarn to get dependencies
-```
-yarn
-```
-
-
 Build the dockerfile image
 
 ```
@@ -49,6 +43,12 @@ docker-compose up
 From here the API should be exposed on localhost:3000
 
 ## Running the tests
+
+
+Run yarn to get dependencies
+```
+yarn
+```
 
 Simply run the following at execute the tests.
 
