@@ -28,6 +28,12 @@ yarn global add typescript
 
 ### Running locally
 
+Run yarn to get dependencies
+```
+yarn
+```
+
+
 Build the dockerfile image
 
 ```
