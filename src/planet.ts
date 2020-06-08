@@ -1,4 +1,3 @@
-import mongoose = require("mongoose");
 import dataService from "./service";
 
 export interface IPlanet extends dataService.Document {
@@ -18,5 +17,5 @@ export const PlanetSchema = new dataService.Schema(
   }
 );
 
-const Planet = mongoose.model<IPlanet>("Planet", PlanetSchema);
-export default Planet;
+const planet = dataService.model<IPlanet>("Planet", PlanetSchema);
+export default planet;
