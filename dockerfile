@@ -10,6 +10,9 @@ RUN yarn build
 
 ENV NODE_ENV docker
 
+ARG mongodb_url
+ENV MONGODB_URL=$mongodb_url
+
 EXPOSE 3000
 
 CMD [ "yarn", "run", "server" ]
